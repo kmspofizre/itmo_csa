@@ -1,0 +1,19 @@
+limit: 1000
+memory_size: 0x99
+input_streams:
+  0x80: [56, 98]
+  0x84: []
+reports:
+  - name: "Step-by-step"
+    slice: all
+    view: |
+      {pc}: {instruction} {pc:label}
+      a: {memory:0x8:0xB}
+      b: {memory:0xC:0xF}
+      result: {memory:0x84}
+      all: {memory:0x8:0xF}
+  - name: "Result"
+    slice: last
+    view: |
+      memory[0x0:0x88]: {memory:0x0:0x84}
+      numio[0x84]: {io:0x84:dec}
